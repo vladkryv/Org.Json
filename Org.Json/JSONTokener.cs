@@ -127,11 +127,9 @@ namespace Org.Json
 
 						return _in.Substring(start, (_pos - 1) - start);
 					}
-					else
-					{
-						builder.Append(_in, start, _pos - 1);
-						return builder.ToString();
-					}
+
+					builder.Append(_in, start, _pos - 1 - start);
+					return builder.ToString();
 				}
 
 				if (c == '\\')
@@ -144,7 +142,7 @@ namespace Org.Json
 					{
 						builder = new StringBuilder();
 					}
-					builder.Append(_in, start, _pos - 1);
+					builder.Append(_in, start, _pos - 1 - start);
 					builder.Append(ReadEscapeCharacter());
 					start = _pos;
 				}
